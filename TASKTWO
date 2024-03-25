@@ -1,0 +1,30 @@
+//Develop a java chatbot capable of engaging in conversation with users. The chatbot should understand natural language input and respond appropriately, providing relevant information or assistance. Utilize natural language processing techniques to enhance the bot's ability to interpret user queries accurately. Ensure the chatbot's responses are contextually relevant and contribute to a seamless user experience.Additionally, Imagine you've been tasked with creating comprehensive documentation for a java Chatbot project.Your documentation should include detailed explanations of the code along with images illustrating the program's execution and user interactions.
+import org.alicebot.ab.*;
+
+import java.io.File;
+
+public class Chatbot {
+
+    public static void main(String[] args) {
+        // Initialize bot
+        Bot bot = new Bot("alice2", new File("src/main/resources"));
+        Chat chatSession = new Chat(bot);
+
+        // Chat interaction loop
+        while (true) {
+            // Get user input
+            System.out.print("You: ");
+            String userInput = System.console().readLine();
+
+            // Exit loop if user enters "quit"
+            if (userInput.equalsIgnoreCase("quit")) {
+                System.out.println("Exiting chatbot...");
+                break;
+            }
+
+            // Get bot's response
+            String botResponse = chatSession.multisentenceRespond(userInput);
+            System.out.println("Bot: " + botResponse);
+        }
+    }
+}
